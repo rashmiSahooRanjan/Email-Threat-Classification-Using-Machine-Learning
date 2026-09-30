@@ -264,7 +264,7 @@ def main():
 
             col_submit, col_space = st.columns([2, 5])
             with col_submit:
-                submit_btn = st.form_submit_button("🔍 Classify Email", use_container_width=True)
+                submit_btn = st.form_submit_button("🔍 Classify Email")
 
         # Classification execution
         if submit_btn:
@@ -395,7 +395,7 @@ def main():
         if os.path.exists(comp_csv):
             st.subheader("🎯 Experimental Evaluation Metrics (Test Set)")
             df_comp = pd.read_csv(comp_csv)
-            st.dataframe(df_comp, use_container_width=True, hide_index=True)
+            st.table(df_comp)
         else:
             st.info("Evaluation metrics will appear here once `src/evaluate_models.py` has run.")
 
@@ -406,10 +406,10 @@ def main():
             c1, c2 = st.columns(2)
             with c1:
                 if os.path.exists(roc_img):
-                    st.image(roc_img, caption="ROC Curve Comparison", use_container_width=True)
+                    st.image(roc_img, caption="ROC Curve Comparison")
             with c2:
                 if os.path.exists(feat_img):
-                    st.image(feat_img, caption="Feature Relevance Comparison", use_container_width=True)
+                    st.image(feat_img, caption="Feature Relevance Comparison")
 
     # Mandatory Capstone Disclaimer Box
     st.markdown("""
