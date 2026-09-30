@@ -1,0 +1,35 @@
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Large dataset files (GitHub 100MB file limit)
+[Dd]ataset/
+dataset/
+Dataset/
+*.csv.gz
+
+# Virtual Environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE / Editor configuration
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs and temporary files
+*.log
+scratch/
+scratch_*.json
+scratch_*.py
+
+# OS generated files
+.DS_Store
+Thumbs.db

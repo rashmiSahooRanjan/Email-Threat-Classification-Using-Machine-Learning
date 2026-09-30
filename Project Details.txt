@@ -1,0 +1,1582 @@
+You are an expert Python Machine Learning engineer, Data Scientist, Cybersecurity ML researcher, Streamlit developer, and technical documentation writer.
+
+I need you to build a COMPLETE, REPRODUCIBLE, EDUCATIONAL CAPSTONE PROJECT from the beginning to the final working application.
+
+PROJECT TITLE:
+Email Threat Classification Using Machine Learning
+
+DOMAIN:
+Cybersecurity
+
+ML TASK:
+Binary Classification
+
+PROJECT DURATION:
+10 days
+
+IMPORTANT:
+This is an educational capstone project. It is NOT a production cybersecurity system.
+
+The project must strictly follow the project requirements described below.
+
+========================================================
+1. PROJECT REQUIREMENTS
+========================================================
+
+The project objective is:
+
+"Develop an end-to-end, zero-cost ML solution that investigates the assigned email dataset, prepares the data, builds and evaluates foundational machine learning models, interprets the results, and demonstrates the prediction through a lightweight Streamlit application."
+
+The research direction is:
+
+"Investigate which observable email characteristics contribute to threat classification."
+
+Expected inputs should include measurable email characteristics such as:
+
+- message length
+- URL count
+- attachment-related indicators if available
+- keyword indicators
+- sender characteristics if available
+- other measurable characteristics that can be extracted from the actual dataset
+
+Expected output:
+
+- Routine / Legitimate email
+OR
+- Threatening / Phishing email
+
+Optional:
+- probability/risk indication where technically appropriate
+
+The project must investigate:
+
+- data quality
+- missing values
+- duplicates
+- class balance
+- distributions
+- feature relationships
+- outliers
+- preprocessing
+- feature relevance
+- data leakage
+- error analysis
+
+========================================================
+2. IMPORTANT DATASET INSTRUCTION
+========================================================
+
+The dataset is ALREADY PROVIDED LOCALLY.
+
+The project root contains:
+
+dataset/
+
+All downloaded dataset files are inside this folder.
+
+DO NOT download another dataset.
+
+DO NOT replace the dataset.
+
+DO NOT create fake data.
+
+DO NOT generate synthetic data unless absolutely necessary for a tiny demonstration/test and clearly separate it from the real dataset.
+
+FIRST inspect the dataset directory.
+
+Determine:
+
+1. Which files exist.
+2. Which files are CSV.
+3. Number of rows in each file.
+4. Number of columns.
+5. Column names.
+6. Data types.
+7. Missing values.
+8. Duplicate records.
+9. Target/label column.
+10. Class distribution.
+11. Which file should be used as the main modeling dataset.
+12. Whether multiple source datasets can/should be combined.
+
+Do not assume column names.
+
+Do not assume the downloaded dataset has a particular structure.
+
+Use the actual files and actual columns.
+
+Create a dataset documentation file after inspection:
+
+docs/DATASET_DOCUMENTATION.md
+
+It must contain:
+
+- dataset source
+- files found
+- rows
+- columns
+- column descriptions
+- target variable
+- class definitions
+- missing values
+- duplicates
+- data-quality observations
+- preprocessing decisions
+- citation information
+
+The dataset source is:
+
+Naser Abdullah Alam, Phishing Email Dataset, Kaggle.
+
+Dataset DOI:
+10.34740/KAGGLE/DS/5074342
+
+The dataset combines multiple public email sources.
+
+Clearly cite the original dataset in README and technical paper.
+
+========================================================
+3. DO NOT VIOLATE THE CAPSTONE MODEL SCOPE
+========================================================
+
+The capstone specifically expects foundational machine-learning methods.
+
+Primary models MUST include:
+
+1. Logistic Regression
+2. K-Nearest Neighbors (KNN)
+3. Decision Tree
+
+You may include Random Forest as an OPTIONAL comparison only if useful, but do not allow it to replace the required foundational models.
+
+DO NOT use the following as the primary model:
+
+- BERT
+- DistilBERT
+- Transformer
+- LSTM
+- CNN
+- RNN
+- GPT
+- Gemini
+- Claude
+- OpenAI API
+- paid AI API
+- commercial cybersecurity API
+- external prediction API
+
+Advanced deep-learning systems are outside the default scope.
+
+The final project must remain explainable and suitable for a student viva.
+
+========================================================
+4. ZERO-COST REQUIREMENT
+========================================================
+
+Use only free/open-source tools and Python libraries.
+
+Allowed:
+
+- Python
+- Pandas
+- NumPy
+- Scikit-learn
+- Matplotlib
+- Seaborn
+- Streamlit
+- Joblib
+- Jupyter Notebook
+- SciPy
+- standard Python libraries
+
+Do not require:
+
+- paid APIs
+- commercial platforms
+- paid cloud services
+- API keys
+- Gemini API
+- OpenAI API
+- Claude API
+
+The application must run locally.
+
+========================================================
+5. PYTHON VERSION
+========================================================
+
+Target Python:
+
+Python 3.10
+
+Create:
+
+requirements.txt
+
+Keep dependencies compatible with Python 3.10.
+
+Do not unnecessarily install huge deep-learning packages.
+
+The project should remain lightweight.
+
+========================================================
+6. IMPORTANT MODELING DECISION
+========================================================
+
+The original dataset contains email text.
+
+However, the capstone specifically emphasizes measurable email characteristics.
+
+Therefore:
+
+FIRST inspect the actual dataset.
+
+Then design an appropriate feature-engineering strategy based on the actual columns.
+
+Potential engineered features include, where the required information exists:
+
+- message_length
+- word_count
+- character_count
+- subject_length
+- body_length
+- url_count
+- email_count
+- attachment_indicator
+- suspicious_keyword_count
+- urgency_keyword_count
+- exclamation_count
+- question_mark_count
+- uppercase_count
+- uppercase_ratio
+- digit_count
+- special_character_count
+- html_indicator
+- html_tag_count
+- hyperlink_indicator
+- domain-related features
+- sender-related features
+- recipient-related features
+- other objectively measurable features
+
+DO NOT invent features that cannot be derived from the available dataset.
+
+For every engineered feature, document:
+
+- definition
+- calculation
+- reason for inclusion
+- data source/column
+- possible limitations
+
+Create:
+
+src/feature_engineering.py
+
+========================================================
+7. TEXT DATA REQUIREMENT
+========================================================
+
+Because the dataset contains email text, carefully determine how to use the text.
+
+The project should prioritize measurable characteristics rather than building an advanced NLP/deep-learning system.
+
+A suitable approach may include:
+
+- text length
+- word count
+- URL count
+- suspicious keyword indicators
+- urgency keyword indicators
+- punctuation statistics
+- HTML indicators
+- character statistics
+
+If TF-IDF is used, it must be clearly justified and kept within the foundational ML scope.
+
+Do NOT automatically use thousands of text features without explaining why.
+
+If both engineered numeric features and TF-IDF are used, compare/justify the approach clearly.
+
+The main project must remain understandable for a student viva.
+
+========================================================
+8. PROJECT STRUCTURE
+========================================================
+
+Create this structure:
+
+Email_Threat_Classification/
+│
+├── dataset/
+│   └── [existing downloaded dataset files]
+│
+├── notebooks/
+│   └── email_threat_classification.ipynb
+│
+├── src/
+│   ├── __init__.py
+│   ├── data_loader.py
+│   ├── data_cleaning.py
+│   ├── feature_engineering.py
+│   ├── preprocessing.py
+│   ├── train_models.py
+│   ├── evaluate_models.py
+│   ├── error_analysis.py
+│   └── prediction.py
+│
+├── models/
+│   ├── logistic_regression_pipeline.joblib
+│   ├── knn_pipeline.joblib
+│   ├── decision_tree_pipeline.joblib
+│   └── final_model.joblib
+│
+├── outputs/
+│   ├── figures/
+│   ├── metrics/
+│   ├── predictions/
+│   └── reports/
+│
+├── app/
+│   └── app.py
+│
+├── tests/
+│   ├── test_data.py
+│   ├── test_features.py
+│   ├── test_model.py
+│   └── test_app_logic.py
+│
+├── docs/
+│   ├── DATASET_DOCUMENTATION.md
+│   ├── METHODOLOGY.md
+│   ├── MODEL_COMPARISON.md
+│   └── ERROR_ANALYSIS.md
+│
+├── technical_paper/
+│   └── technical_paper.md
+│
+├── README.md
+├── requirements.txt
+├── .gitignore
+└── run_project.bat
+
+========================================================
+9. DATA LOADING
+========================================================
+
+Create robust dataset loading code.
+
+The code must:
+
+- detect dataset files
+- read CSV files
+- show useful errors
+- validate expected columns
+- avoid hardcoded absolute paths
+- use relative paths
+- work on Windows
+
+The root dataset directory should be:
+
+./dataset/
+
+Do not use:
+
+C:/Users/...
+D:/...
+or any machine-specific path.
+
+========================================================
+10. DATA QUALITY ANALYSIS
+========================================================
+
+Perform complete data-quality analysis.
+
+Include:
+
+1. Shape
+2. Columns
+3. Data types
+4. Missing values
+5. Missing-value percentage
+6. Duplicate rows
+7. Empty strings
+8. Invalid values
+9. Infinite values
+10. Unique values
+11. Target classes
+12. Class distribution
+
+Save a summary report to:
+
+outputs/reports/data_quality_report.csv
+
+========================================================
+11. EDA
+========================================================
+
+Create a complete EDA notebook.
+
+The notebook must contain:
+
+SECTION 1:
+Dataset introduction
+
+SECTION 2:
+Dataset shape
+
+SECTION 3:
+Column information
+
+SECTION 4:
+Missing-value analysis
+
+SECTION 5:
+Duplicate analysis
+
+SECTION 6:
+Class distribution
+
+SECTION 7:
+Numerical feature statistics
+
+SECTION 8:
+Feature distributions
+
+SECTION 9:
+Outlier analysis
+
+SECTION 10:
+Correlation analysis
+
+SECTION 11:
+Feature-vs-target analysis
+
+SECTION 12:
+Feature relevance
+
+SECTION 13:
+Data leakage investigation
+
+SECTION 14:
+EDA conclusions
+
+Generate useful plots.
+
+Save plots to:
+
+outputs/figures/
+
+Use clear filenames such as:
+
+01_class_distribution.png
+02_missing_values.png
+03_message_length_distribution.png
+04_url_count_distribution.png
+05_feature_boxplots.png
+06_correlation_heatmap.png
+07_feature_target_relationship.png
+
+Do not create meaningless graphs.
+
+Each graph must have:
+
+- title
+- axis labels
+- readable font
+- legend where necessary
+- appropriate figure size
+
+========================================================
+12. CLASS BALANCE
+========================================================
+
+Analyze whether the dataset is balanced.
+
+Report:
+
+- class counts
+- class percentages
+- imbalance ratio
+
+Do not automatically oversample or undersample.
+
+First determine whether balancing is actually necessary.
+
+If class imbalance exists, compare appropriate approaches.
+
+Possible approach:
+
+- class_weight="balanced"
+
+Only use resampling if justified.
+
+Avoid data leakage during resampling.
+
+Any resampling must happen ONLY on training data.
+
+========================================================
+13. PREPROCESSING
+========================================================
+
+Create a proper preprocessing pipeline.
+
+Use:
+
+- numerical preprocessing where necessary
+- categorical encoding where necessary
+- text transformation only if justified
+- missing-value handling
+- feature selection if needed
+
+Use Scikit-learn Pipeline and ColumnTransformer where appropriate.
+
+VERY IMPORTANT:
+
+Fit preprocessing only on training data.
+
+Never fit preprocessing using the complete dataset before train/test splitting.
+
+This is required to prevent data leakage.
+
+========================================================
+14. TRAIN/TEST SPLIT
+========================================================
+
+Use:
+
+80% training
+20% testing
+
+Use:
+
+stratify=y
+
+Use:
+
+random_state=42
+
+unless there is a documented reason to change it.
+
+The test set must remain untouched until final evaluation.
+
+========================================================
+15. MODEL TRAINING
+========================================================
+
+Train these models:
+
+MODEL 1:
+Logistic Regression
+
+MODEL 2:
+K-Nearest Neighbors
+
+MODEL 3:
+Decision Tree
+
+Use sensible hyperparameters.
+
+Do not perform excessive hyperparameter searching.
+
+The project is a 10-day educational capstone.
+
+If hyperparameter tuning is performed, keep it simple and explain it.
+
+Save each trained pipeline to:
+
+models/
+
+========================================================
+16. MODEL EVALUATION
+========================================================
+
+Evaluate every model using:
+
+- Accuracy
+- Precision
+- Recall
+- F1-score
+- Confusion Matrix
+- ROC-AUC where appropriate
+
+Also calculate:
+
+- True Positive
+- True Negative
+- False Positive
+- False Negative
+
+Create:
+
+outputs/metrics/model_comparison.csv
+
+Example structure:
+
+Model,Accuracy,Precision,Recall,F1,ROC_AUC
+
+Do not fabricate any metric.
+
+All metrics must come from actual model execution.
+
+========================================================
+17. CONFUSION MATRICES
+========================================================
+
+Generate a confusion matrix for each model.
+
+Save:
+
+outputs/figures/confusion_matrix_logistic_regression.png
+
+outputs/figures/confusion_matrix_knn.png
+
+outputs/figures/confusion_matrix_decision_tree.png
+
+Explain:
+
+TP:
+Threatening email correctly detected.
+
+TN:
+Routine/legitimate email correctly identified.
+
+FP:
+Routine email incorrectly classified as threatening.
+
+FN:
+Threatening email incorrectly classified as routine.
+
+========================================================
+18. ROC CURVES
+========================================================
+
+Where probability scores are available, create ROC curves.
+
+Compare models in one meaningful plot.
+
+Save:
+
+outputs/figures/roc_curve_comparison.png
+
+Calculate ROC-AUC.
+
+Do not claim ROC-AUC if it is not technically appropriate.
+
+========================================================
+19. FEATURE IMPORTANCE
+========================================================
+
+Analyze feature relevance.
+
+For Logistic Regression:
+
+- coefficients where appropriate
+
+For Decision Tree:
+
+- feature_importances_
+
+Additionally use permutation importance if useful.
+
+Create:
+
+outputs/metrics/feature_importance.csv
+
+Create visualization:
+
+outputs/figures/feature_importance.png
+
+Explain which measurable characteristics contribute to classification.
+
+Do not make unsupported cybersecurity claims.
+
+========================================================
+20. ERROR ANALYSIS
+========================================================
+
+This is mandatory.
+
+Analyze incorrect predictions.
+
+Create:
+
+outputs/predictions/test_predictions.csv
+
+Columns should include:
+
+- original identifier if available
+- true label
+- predicted label
+- probability if available
+- important engineered features
+
+Analyze:
+
+1. False positives
+2. False negatives
+3. Common feature patterns
+4. Difficult emails
+5. Potential reasons for misclassification
+
+Create:
+
+docs/ERROR_ANALYSIS.md
+
+Do not invent explanations.
+
+Base explanations on actual observations.
+
+========================================================
+21. MODEL COMPARISON
+========================================================
+
+Create:
+
+docs/MODEL_COMPARISON.md
+
+Include:
+
+- Logistic Regression results
+- KNN results
+- Decision Tree results
+- metric comparison
+- confusion matrices
+- ROC-AUC
+- feature interpretation
+- computational considerations
+- limitations
+
+Do NOT simply say:
+
+"The highest accuracy model is automatically the best."
+
+Interpret multiple metrics.
+
+The final model selection must be justified using the actual experimental results and the project's objective.
+
+Do not fabricate results.
+
+========================================================
+22. FINAL MODEL
+========================================================
+
+After evaluation, select the final model based on documented evidence.
+
+Copy/save it as:
+
+models/final_model.joblib
+
+Also save any preprocessing pipeline required for prediction.
+
+The final model must use exactly the same preprocessing and feature engineering as training.
+
+========================================================
+23. STREAMLIT APPLICATION
+========================================================
+
+Create:
+
+app/app.py
+
+The application must be simple, clean, professional, and suitable for a college capstone demonstration.
+
+Title:
+
+Email Threat Classification
+
+Subtitle:
+
+Machine Learning Based Email Threat Classification
+
+Application sections:
+
+1. Project Overview
+2. Email Input
+3. Extracted Features
+4. Prediction
+5. Risk/Probability
+6. Model Information
+7. Disclaimer
+
+========================================================
+24. STREAMLIT INPUT
+========================================================
+
+The application should allow the user to enter an email message.
+
+For example:
+
+Text area:
+
+"Paste email message here..."
+
+If the actual dataset supports subject information:
+
+Subject:
+
+"Enter email subject"
+
+The application should extract the same features used during training.
+
+Examples:
+
+- message length
+- word count
+- URL count
+- suspicious keyword count
+- urgency keyword count
+- punctuation count
+- uppercase ratio
+- HTML indicator
+- other features actually used by the trained model
+
+Do NOT ask the user to manually enter features that can be extracted automatically from the email text unless there is a strong reason.
+
+This makes the application more realistic.
+
+========================================================
+25. STREAMLIT OUTPUT
+========================================================
+
+After clicking:
+
+"Classify Email"
+
+display:
+
+Prediction:
+
+ROUTINE / LEGITIMATE
+
+or
+
+THREATENING / PHISHING
+
+If the model supports probability:
+
+Threat Probability: XX.XX%
+
+Also display:
+
+- model used
+- extracted feature summary
+- short explanation
+
+Do not call the output a guaranteed security decision.
+
+Display a disclaimer:
+
+"This application is an educational machine-learning prototype and should not be used as a production email security system."
+
+========================================================
+26. STREAMLIT DESIGN
+========================================================
+
+Use a professional cybersecurity-inspired interface.
+
+Do not over-design.
+
+Use:
+
+- sidebar
+- cards/metrics
+- clear buttons
+- readable typography
+- tables
+- simple visual indicators
+
+The application must remain functional on a normal laptop.
+
+No paid UI library is required.
+
+========================================================
+27. APPLICATION VALIDATION
+========================================================
+
+The app must handle:
+
+- empty email
+- extremely short input
+- very long input
+- special characters
+- HTML email
+- URLs
+- normal legitimate emails
+- suspicious-looking emails
+
+Show friendly validation messages.
+
+Do not crash.
+
+========================================================
+28. TESTING
+========================================================
+
+Create tests for:
+
+- dataset loading
+- feature extraction
+- preprocessing
+- model loading
+- prediction
+- empty input
+- invalid input
+
+Use pytest if appropriate.
+
+Create:
+
+tests/
+
+Run tests and fix failures.
+
+========================================================
+29. REPRODUCIBILITY
+========================================================
+
+Everything must be reproducible.
+
+Use:
+
+random_state=42
+
+where applicable.
+
+Do not use random undocumented behavior.
+
+The README must explain exactly how to:
+
+1. create virtual environment
+2. install dependencies
+3. run notebook
+4. train model
+5. evaluate model
+6. run Streamlit
+
+========================================================
+30. WINDOWS SETUP
+========================================================
+
+The user is working on Windows.
+
+Create instructions for:
+
+Python 3.10
+
+Virtual environment:
+
+python -m venv venv
+
+Activation:
+
+venv\Scripts\activate
+
+Installation:
+
+pip install -r requirements.txt
+
+Run Streamlit:
+
+streamlit run app/app.py
+
+Create:
+
+run_project.bat
+
+that can help start the application after dependencies are installed.
+
+========================================================
+31. README
+========================================================
+
+Create a complete README.md.
+
+Include:
+
+# Email Threat Classification Using Machine Learning
+
+## 1. Project Overview
+
+## 2. Problem Statement
+
+## 3. Objective
+
+## 4. Research Direction
+
+## 5. Dataset
+
+## 6. Dataset Citation
+
+## 7. Features
+
+## 8. EDA
+
+## 9. Preprocessing
+
+## 10. Machine Learning Models
+
+## 11. Evaluation Metrics
+
+## 12. Results
+
+## 13. Streamlit Application
+
+## 14. Project Structure
+
+## 15. Installation
+
+## 16. Running the Project
+
+## 17. Testing
+
+## 18. Limitations
+
+## 19. Future Scope
+
+## 20. Disclaimer
+
+Do not place fabricated model results in README.
+
+If results have not yet been generated, use placeholders and automatically update them after training.
+
+========================================================
+32. TECHNICAL PAPER
+========================================================
+
+Create:
+
+technical_paper/technical_paper.md
+
+The paper must contain:
+
+1. Abstract
+2. Introduction
+3. Problem Definition
+4. Objectives
+5. Related Work
+6. Dataset Description
+7. Exploratory Data Analysis
+8. Data Preprocessing
+9. Feature Engineering
+10. Data Leakage Analysis
+11. Model Development
+12. Model Training
+13. Performance Evaluation
+14. Comparative Model Analysis
+15. Error Analysis
+16. Discussion
+17. Limitations
+18. Future Scope
+19. Conclusion
+20. References
+
+The abstract must contain:
+
+- Context
+- Aim/Objectives
+- Methodology
+- Results
+- Conclusion
+
+Do not write fake numerical results.
+
+Automatically insert actual experimental results after training.
+
+========================================================
+33. PAPER WRITING STYLE
+========================================================
+
+Use formal academic English.
+
+Avoid:
+
+- exaggerated claims
+- unsupported claims
+- fake citations
+- fake accuracy
+- fake dataset statistics
+- claims that the system is production-ready
+
+Clearly state that the project is an educational prototype.
+
+Use citations for:
+
+- dataset
+- research papers
+- external methodologies
+- libraries where appropriate
+
+========================================================
+34. DATASET CITATION
+========================================================
+
+Use this dataset citation information:
+
+Naser Abdullah Alam. (2024). Phishing Email Dataset. Kaggle.
+
+DOI:
+
+10.34740/KAGGLE/DS/5074342
+
+Also acknowledge the source datasets included in the collection where appropriate.
+
+Do not falsely claim that all emails were personally collected.
+
+========================================================
+35. NOTEBOOK
+========================================================
+
+Create a fully executable notebook:
+
+notebooks/email_threat_classification.ipynb
+
+Notebook sections:
+
+1. Imports
+2. Configuration
+3. Dataset Discovery
+4. Dataset Loading
+5. Dataset Overview
+6. Data Quality
+7. Missing Values
+8. Duplicates
+9. Class Distribution
+10. Feature Engineering
+11. EDA
+12. Correlation Analysis
+13. Outlier Analysis
+14. Feature Relevance
+15. Leakage Investigation
+16. Train/Test Split
+17. Preprocessing
+18. Logistic Regression
+19. KNN
+20. Decision Tree
+21. Model Evaluation
+22. Confusion Matrices
+23. ROC Curves
+24. Model Comparison
+25. Feature Importance
+26. Error Analysis
+27. Final Model
+28. Save Model
+29. Final Conclusions
+
+Every cell must run in order.
+
+Do not rely on variables from cells that appear later.
+
+========================================================
+36. OUTPUT REPORTS
+========================================================
+
+Generate:
+
+outputs/reports/data_quality_report.csv
+
+outputs/metrics/model_comparison.csv
+
+outputs/metrics/feature_importance.csv
+
+outputs/predictions/test_predictions.csv
+
+Also generate useful JSON/CSV summaries if needed.
+
+========================================================
+37. CODE QUALITY
+========================================================
+
+Code requirements:
+
+- PEP8-style formatting
+- meaningful variable names
+- functions instead of giant scripts
+- docstrings
+- comments where necessary
+- no unnecessary code duplication
+- no hardcoded machine-specific paths
+- proper error handling
+- modular design
+
+Do not put the entire project inside one Python file.
+
+========================================================
+38. SECURITY / ETHICAL REQUIREMENTS
+========================================================
+
+This project is for educational classification only.
+
+Do not implement:
+
+- email sending
+- email deletion
+- automatic blocking
+- account access
+- credential collection
+- malicious payload execution
+- attachment execution
+- real-world email interception
+
+The system should only analyze text/features and classify the supplied email.
+
+Never execute content from an email.
+
+Treat uploaded/pasted email content as untrusted data.
+
+========================================================
+39. IMPORTANT DATA PRIVACY REQUIREMENT
+========================================================
+
+Do not send email content to any external API.
+
+All processing must happen locally.
+
+Do not add telemetry.
+
+Do not store user-entered email content unnecessarily.
+
+If the application stores prediction history, use only anonymized/non-sensitive information and make it optional.
+
+Prefer no persistent storage of user email content.
+
+========================================================
+40. FINAL DEMONSTRATION
+========================================================
+
+The final project demonstration should show:
+
+STEP 1:
+Open Streamlit application.
+
+STEP 2:
+Paste a legitimate example.
+
+STEP 3:
+Click Classify Email.
+
+STEP 4:
+Show prediction.
+
+STEP 5:
+Show extracted characteristics.
+
+STEP 6:
+Paste a phishing/threat example.
+
+STEP 7:
+Show prediction.
+
+STEP 8:
+Show model information.
+
+STEP 9:
+Open notebook.
+
+STEP 10:
+Show EDA.
+
+STEP 11:
+Show model comparison.
+
+STEP 12:
+Show confusion matrix.
+
+STEP 13:
+Show feature importance.
+
+STEP 14:
+Show error analysis.
+
+========================================================
+41. 10-DAY CAPSTONE PLAN
+========================================================
+
+Document the following:
+
+DAY 1:
+Problem understanding and research.
+
+DAY 2:
+Dataset inspection and preparation.
+
+DAY 3:
+EDA.
+
+DAY 4:
+Preprocessing and model development.
+
+DAY 5:
+Model evaluation.
+
+DAY 6:
+Model improvement and error analysis.
+
+DAY 7:
+Streamlit application.
+
+DAY 8:
+Integration and testing.
+
+DAY 9:
+Technical paper and presentation.
+
+DAY 10:
+Final demonstration and viva preparation.
+
+========================================================
+42. VIVA PREPARATION
+========================================================
+
+Create:
+
+docs/VIVA_QUESTIONS.md
+
+Include at least 40 questions and answers covering:
+
+- Why this project?
+- Why phishing email classification?
+- What is binary classification?
+- What dataset did you use?
+- What is the target variable?
+- What are the classes?
+- How many records?
+- What is EDA?
+- Why perform EDA?
+- What are missing values?
+- What are duplicates?
+- What is class imbalance?
+- How did you handle imbalance?
+- What is data leakage?
+- How did you prevent leakage?
+- What is feature engineering?
+- Why use Logistic Regression?
+- Why use KNN?
+- Why use Decision Tree?
+- How does Logistic Regression work?
+- How does KNN work?
+- How does Decision Tree work?
+- What is accuracy?
+- What is precision?
+- What is recall?
+- What is F1-score?
+- What is ROC-AUC?
+- What is a confusion matrix?
+- What is TP?
+- What is TN?
+- What is FP?
+- What is FN?
+- Why are false negatives important?
+- How did you choose the final model?
+- What are the limitations?
+- What is the purpose of Streamlit?
+- How does the application make predictions?
+- How is preprocessing kept consistent?
+- What is future scope?
+- Why is this not a production cybersecurity system?
+
+Answers must be based on the actual implementation.
+
+========================================================
+43. FINAL QUALITY CHECK
+========================================================
+
+Before declaring the project complete, perform a complete audit.
+
+Check:
+
+[ ] Dataset folder exists.
+
+[ ] Dataset is actually read from ./dataset/.
+
+[ ] No fake dataset is generated.
+
+[ ] Actual dataset columns are documented.
+
+[ ] Actual dataset statistics are reported.
+
+[ ] Missing values analyzed.
+
+[ ] Duplicate values analyzed.
+
+[ ] Class balance analyzed.
+
+[ ] EDA completed.
+
+[ ] Outliers analyzed.
+
+[ ] Correlation analyzed where appropriate.
+
+[ ] Feature relevance analyzed.
+
+[ ] Data leakage investigated.
+
+[ ] Preprocessing implemented.
+
+[ ] Train/test split implemented correctly.
+
+[ ] Logistic Regression trained.
+
+[ ] KNN trained.
+
+[ ] Decision Tree trained.
+
+[ ] Evaluation metrics calculated.
+
+[ ] Confusion matrices generated.
+
+[ ] ROC-AUC calculated where appropriate.
+
+[ ] Error analysis completed.
+
+[ ] Final model selected based on actual evidence.
+
+[ ] Model saved.
+
+[ ] Streamlit app works.
+
+[ ] Streamlit uses the same preprocessing.
+
+[ ] Tests pass.
+
+[ ] requirements.txt works with Python 3.10.
+
+[ ] README completed.
+
+[ ] Technical paper completed.
+
+[ ] Dataset citation included.
+
+[ ] Viva questions created.
+
+[ ] No paid APIs.
+
+[ ] No API keys.
+
+[ ] No deep-learning model used as primary model.
+
+[ ] No fabricated results.
+
+[ ] No fabricated references.
+
+[ ] No hardcoded local paths.
+
+========================================================
+44. EXECUTION INSTRUCTION
+========================================================
+
+Do NOT simply give me code snippets.
+
+Actually create the complete project files in the current Antigravity project workspace.
+
+Start by inspecting the existing project directory and dataset folder.
+
+Then:
+
+PHASE 1:
+Inspect dataset.
+
+PHASE 2:
+Create project structure.
+
+PHASE 3:
+Implement data loading and data quality analysis.
+
+PHASE 4:
+Implement feature engineering.
+
+PHASE 5:
+Create complete EDA notebook.
+
+PHASE 6:
+Implement preprocessing.
+
+PHASE 7:
+Train Logistic Regression, KNN and Decision Tree.
+
+PHASE 8:
+Evaluate models.
+
+PHASE 9:
+Perform feature importance and error analysis.
+
+PHASE 10:
+Select and save final model.
+
+PHASE 11:
+Create Streamlit application.
+
+PHASE 12:
+Create tests.
+
+PHASE 13:
+Run tests.
+
+PHASE 14:
+Run the complete training pipeline.
+
+PHASE 15:
+Generate actual results.
+
+PHASE 16:
+Update documentation using actual results.
+
+PHASE 17:
+Run Streamlit and verify that it starts without errors.
+
+PHASE 18:
+Perform final project audit.
+
+If any error occurs, diagnose it and fix it rather than stopping.
+
+Do not ask me for confirmation for every small step.
+
+Use the available terminal to install dependencies and run scripts when necessary.
+
+However, NEVER delete or overwrite the original dataset files.
+
+========================================================
+45. MOST IMPORTANT RULE
+========================================================
+
+The actual downloaded dataset is the source of truth.
+
+Never invent:
+
+- dataset size
+- column names
+- class counts
+- model accuracy
+- precision
+- recall
+- F1-score
+- ROC-AUC
+- feature importance
+- research findings
+
+Everything must be calculated from the actual dataset.
+
+If the dataset structure differs from expectations, adapt the implementation to the actual dataset and document the adaptation.
+
+========================================================
+46. FINAL RESPONSE FROM AGENT
+========================================================
+
+After completing the implementation, provide me with:
+
+1. Final project structure.
+2. Dataset files detected.
+3. Dataset statistics.
+4. Features created.
+5. Models trained.
+6. Actual model results.
+7. Final model selected and why.
+8. Streamlit run command.
+9. Test results.
+10. Files created.
+11. Any limitations or issues that remain.
+
+Do not claim completion unless the project has actually been executed and checked.
+
+BEGIN NOW.

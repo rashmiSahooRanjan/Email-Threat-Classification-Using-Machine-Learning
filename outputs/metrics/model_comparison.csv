@@ -1,0 +1,4 @@
+Model,Accuracy,Precision,Recall,F1,ROC_AUC,True_Positive,True_Negative,False_Positive,False_Negative
+Logistic Regression,0.7434,0.7311,0.8005,0.7642,0.7912,6853,5398,2520,1708
+K-Nearest Neighbors,0.8806,0.8892,0.8797,0.8844,0.9406,7531,6980,938,1030
+Decision Tree,0.8964,0.92,0.8769,0.8979,0.9553,7507,7265,653,1054
