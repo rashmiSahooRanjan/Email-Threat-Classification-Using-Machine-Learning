@@ -318,3 +318,9 @@ All **15 unit and integration tests** validate data loading, feature extraction,
 ## 20. Disclaimer
 > **⚠️ ACADEMIC & RESEARCH DISCLAIMER**:  
 > This software is an educational machine-learning capstone prototype developed strictly for academic demonstration, research, and viva examination. It is **NOT** a production cybersecurity system and must not be deployed as the sole perimeter defense against cyber threats or real-world email compromise.
+
+## 👨‍💻 Authors
+
+| Name                          | Role      |
+| ----------------------------- | --------- |
+| **Rashmi Ranjan Sahoo** | ML Developer |
